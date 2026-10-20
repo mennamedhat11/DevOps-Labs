@@ -33,21 +33,19 @@ CMD ["java", "-jar", "target/calculator.jar"]
 USER appuser
 
 EXPOSE 8080
+```
 
 ### Explanation
 
-- `FROM maven:3.9-eclipse-temurin-17`: Maven image with Java 17 (JDK).
-- `RUN useradd -m appuser`: creates a non-root user with a home directory (Maven needs it for `~/.m2`).
+- `FROM maven:3.9-eclipse-temurin-17-alpine`: Maven image with Java 17 (JDK), based on Alpine Linux.
 - `WORKDIR /app`: sets the working directory.
+- `RUN addgroup -S appgroup && adduser -S appuser -G appgroup`: creates a non-root system user and group (Alpine uses `addgroup` and `adduser` instead of `useradd`).
 - `COPY . .`: copies the source code into the image.
-- `RUN chown -R appuser:appuser /app`: gives the user ownership of the application files.
-- `USER appuser`: all following instructions, and the container itself, run as `appuser`.
+- `RUN chown -R appuser:appgroup /app`: gives the user ownership of the application files.
 - `RUN mvn package`: builds the JAR inside the image.
+- `CMD ["java", "-jar", "target/calculator.jar"]`: runs the generated JAR.
+- `USER appuser`: the container runs as `appuser` instead of root.
 - `EXPOSE 8080`: documents the application port.
-- `ENTRYPOINT []`: removes the Maven image's default entrypoint so the JAR runs directly.
-- `CMD`: runs the generated JAR.
-
-
 
 ## Steps
 
