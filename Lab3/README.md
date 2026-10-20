@@ -16,20 +16,14 @@ cd Lab3
 ## Dockerfile
 
 ```dockerfile
-FROM maven:3.9-eclipse-temurin-17
+FROM amazoncorretto:17-alpine3.21-full
 
-RUN useradd -m appuser
 WORKDIR /app
-COPY . .
-RUN chown -R appuser:appuser /app
 
-USER appuser
-RUN mvn package
+COPY target/calculator.jar .
 
-EXPOSE 8080
-ENTRYPOINT []
-CMD ["sh", "-c", "java -jar target/*.jar"]
-```
+CMD ["java", "-jar", "calculator.jar"]
+
 
 ### Explanation
 
