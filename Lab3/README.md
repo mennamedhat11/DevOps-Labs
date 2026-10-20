@@ -16,14 +16,23 @@ cd Lab3
 ## Dockerfile
 
 ```dockerfile
-FROM amazoncorretto:17-alpine3.21-full
+FROM maven:3.9-eclipse-temurin-17-alpine
 
 WORKDIR /app
 
-COPY target/calculator.jar .
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
-CMD ["java", "-jar", "calculator.jar"]
+COPY . .
 
+RUN chown -R appuser:appgroup /app
+
+RUN mvn package
+
+CMD ["java", "-jar", "target/calculator.jar"]
+
+USER appuser
+
+EXPOSE 8080
 
 ### Explanation
 
