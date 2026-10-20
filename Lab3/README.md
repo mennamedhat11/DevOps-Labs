@@ -47,6 +47,8 @@ EXPOSE 8080
 - `ENTRYPOINT []`: removes the Maven image's default entrypoint so the JAR runs directly.
 - `CMD`: runs the generated JAR.
 
+
+
 ## Steps
 
 ### 1. Build the image `app1`
