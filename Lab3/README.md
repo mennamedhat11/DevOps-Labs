@@ -16,20 +16,23 @@ cd Lab3
 ## Dockerfile
 
 ```dockerfile
-FROM maven:3.9-eclipse-temurin-17
+FROM maven:3.9-eclipse-temurin-17-alpine
 
-RUN useradd -m appuser
 WORKDIR /app
-COPY . .
-RUN chown -R appuser:appuser /app
 
-USER appuser
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+COPY . .
+
+RUN chown -R appuser:appgroup /app
+
 RUN mvn package
 
+CMD ["java", "-jar", "target/calculator.jar"]
+
+USER appuser
+
 EXPOSE 8080
-ENTRYPOINT []
-CMD ["sh", "-c", "java -jar target/*.jar"]
-```
 
 ### Explanation
 
@@ -43,6 +46,8 @@ CMD ["sh", "-c", "java -jar target/*.jar"]
 - `EXPOSE 8080`: documents the application port.
 - `ENTRYPOINT []`: removes the Maven image's default entrypoint so the JAR runs directly.
 - `CMD`: runs the generated JAR.
+
+
 
 ## Steps
 
