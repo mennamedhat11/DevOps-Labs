@@ -101,7 +101,7 @@ docker rmi app1
 
 ### Non-root user
 
-![whoami](screenshots/Non-Root_User.png)
+![whoami](screenshots/Non-Root-User.png)
 
 ## Notes
 
