@@ -1,4 +1,4 @@
-# Lab 3: Creating a Docker Image for a Java Application (Part 1: Build Inside Docker)
+# Lab 3-part1: Creating a Docker Image for a Java Application (Part 1: Build Inside Docker)
 
 ## Objective
 
