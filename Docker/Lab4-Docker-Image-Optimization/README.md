@@ -23,10 +23,10 @@ Application source: https://github.com/Ibrahim-Adel15/ImageOptimization-
 
 | Image  | Dockerfile              | Size        | Runs as      |
 |--------|-------------------------|-------------|--------------|
-| image1 | `Dockerfile`            | `<SIZE_1>`  | root         |
-| image2 | `Dockerfile.multistage` | `<SIZE_2>`  | `app` (non-root) |
+| image1 | `Dockerfile`            | `<239MB>`  | root         |
+| image2 | `Dockerfile.multistage` | `<88.2MB>`  | `app` (non-root) |
 
-**Size reduction:** `<SIZE_1>` → `<SIZE_2>`
+**Size reduction:** `<239MB>` → `<88.2MB>`
 
 > Replace the placeholders with the values shown by `docker images`.
 
