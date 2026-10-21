@@ -1,4 +1,4 @@
-# Lab 4: Creating a Docker Image for a Java Application (Part 2: Build Locally)
+# Lab 3-part2: Creating a Docker Image for a Java Application (Part 2: Build Locally)
 
 ## Objective
 
